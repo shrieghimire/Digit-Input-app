@@ -1,0 +1,14 @@
+.drawing-container {
+  width: 32px;
+  height: 32px;
+  border: 1px solid black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: scale(15.625); /* scale up the image by a factor of 15.625 */
+  transform-origin: top left;
+}
+.buttons
+{
+    padding-top: 500px;
+}
