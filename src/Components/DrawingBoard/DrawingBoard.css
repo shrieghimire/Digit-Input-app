@@ -1,14 +1,23 @@
 .drawing-container {
+  
   width: 32px;
   height: 32px;
   border: 1px solid black;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transform: scale(15.625); /* scale up the image by a factor of 15.625 */
+  transform: scale(15.625); /* scale up the image by a factor of 15.625 (32x15.625=500) */
   transform-origin: top left;
+  background-color: aliceblue;
 }
 .buttons
 {
-    padding-top: 500px;
+  padding-top: 500px;
 }
+.canvas{
+  position: relative;
+
+  background-image: url("/public/drawing.jpg");
+  height: 100vh;
+}
+
