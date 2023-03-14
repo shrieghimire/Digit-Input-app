@@ -57,16 +57,17 @@ const DrawingCanvas = () => {
   };
 
   return (
-    <>
-    <div className="canvas">
-      <canvas
-        className="drawing-container"
-        ref={canvasRef}
-        onMouseDown={startDrawing}
-        onMouseMove={draw}
-        onMouseUp={stopDrawing}
-        onMouseLeave={stopDrawing}
-      ></canvas>
+    <div >
+      <div className="drawing-box">
+        <canvas
+          ref={canvasRef}
+          onMouseDown={startDrawing}
+          onMouseMove={draw}
+          onMouseUp={stopDrawing}
+          onMouseLeave={stopDrawing}
+        ></canvas>
+      </div>
+
       <div className="buttons">
         <button onClick={setToErase}>Reset</button>
         <button>
@@ -79,8 +80,7 @@ const DrawingCanvas = () => {
           </a>
         </button>
       </div>
-      </div>
-    </>
+    </div>
   );
 };
 
