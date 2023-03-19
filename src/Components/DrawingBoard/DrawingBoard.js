@@ -13,12 +13,12 @@ const DrawingCanvas = () => {
     canvas.height = 32;
 
     const context = canvas.getContext("2d");
-    context.fillStyle = "black"; // set background color to white
-    context.fillRect(0, 0, canvas.width, canvas.height); // fill the entire canvas with white
+    context.fillStyle = "black"; // set background color to black
+    context.fillRect(0, 0, canvas.width, canvas.height); // fill the entire canvas with black
 
     context.lineCap = "round";
     context.strokeStyle = "white";
-    context.lineWidth = 0.5;
+    context.lineWidth = 2;
     contextRef.current = context;
   }, []);
 
@@ -75,14 +75,9 @@ const DrawingCanvas = () => {
         <button className="reset-button" onClick={setToErase}>
           Reset
         </button>
-        <button className="download-button">
-          <a
-            id="download_image_link"
-            href="download_link"
-            onClick={saveImageToLocal}
-          >
-            Download
-          </a>
+        <button className="download-button" >
+          <a id="download_image_link" href="download_link" onClick={saveImageToLocal}>Download</a>
+          
         </button>
       </div>
     </div>
