@@ -11,7 +11,6 @@ const DrawingCanvas = () => {
     const canvas = canvasRef.current;
     canvas.width = 32;
     canvas.height = 32;
-
     const context = canvas.getContext("2d");
     context.lineCap = "round";
     context.strokeStyle = "black";
@@ -69,14 +68,14 @@ const DrawingCanvas = () => {
       </div>
 
       <div className="buttons">
-        <button onClick={setToErase}>Reset</button>
-        <button>
+        <button className="reset-button" onClick={setToErase}>Reset</button>
+        <button className="download-button">
           <a
             id="download_image_link"
             href="download_link"
             onClick={saveImageToLocal}
           >
-            Download Image
+            Download
           </a>
         </button>
       </div>

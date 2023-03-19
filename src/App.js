@@ -1,4 +1,3 @@
-import Buttons from "./Components/Buttons/Buttons";
 import DrawingBoard from "./Components/DrawingBoard/DrawingBoard";
 import Image from "./Components/Image/Image";
 import "./Components/Image/image.css"
@@ -9,7 +8,6 @@ function App() {
       <div className="image">
         <Image />
         <div><DrawingBoard /></div>
-        <div><Buttons/></div>
       </div>
     </>
   );

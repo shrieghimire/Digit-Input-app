@@ -1,17 +1,61 @@
 .drawing-box {
-  display: flex;
-  justify-content: center;
+  position: static;
   width: 32px;
   height: 32px;
-  box-shadow: 0 0 2px 0 black;
-  /* transform: scale(
-    15.625
-  ); /* scale up the image by a factor of 15.625 (32x15.625=500) */
-  /* transform-origin: top left; */ 
   background-color: aliceblue;
+  box-shadow: 0px 0px 5px black;
+  margin: auto;
+  margin-top: 10px;
+  transform: scale(15.625);
+  transform-origin: top center;
 }
-.buttons {
+.buttons{
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 500px;
 }
+
+.reset-button{
+  
+  background-color: #555555;
+  border: 2px solid #555555;
+  color: #FFFFFF;
+  padding: 15px 32px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.download-button{
+  background-color: aliceblue;
+  border: none;
+  color: #555555;
+  border: 2px solid white;
+  padding: 15px 32px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.reset-button:hover {
+  background-color: white; /* Green */
+  color: #555555;
+}
+.download-button:hover {
+  background-color: #555555; /* Green */
+  color: white;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
