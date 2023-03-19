@@ -56,7 +56,7 @@ const DrawingCanvas = () => {
   };
 
   return (
-    <div >
+    <div>
       <div className="drawing-box">
         <canvas
           ref={canvasRef}
@@ -68,7 +68,9 @@ const DrawingCanvas = () => {
       </div>
 
       <div className="buttons">
-        <button className="reset-button" onClick={setToErase}>Reset</button>
+        <button className="reset-button" onClick={setToErase}>
+          Reset
+        </button>
         <button className="download-button">
           <a
             id="download_image_link"

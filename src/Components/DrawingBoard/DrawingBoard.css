@@ -2,26 +2,25 @@
   position: static;
   width: 32px;
   height: 32px;
-  background-color: aliceblue;
-  box-shadow: 0px 0px 5px black;
+  /* background-color: noaliceblue; */
+  box-shadow: 0px 0px 5px white;
   margin: auto;
-  margin-top: 10px;
-  transform: scale(15.625);
+  margin-top: 30px;
+  transform: scale(11.625);
   transform-origin: top center;
 }
-.buttons{
+.buttons {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 500px;
+  margin-top: 380px;
 }
 
-.reset-button{
-  
+.reset-button {
   background-color: #555555;
   border: 2px solid #555555;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 15px 32px;
   text-align: center;
   transition-duration: 0.4s;
@@ -29,7 +28,7 @@
   font-size: 16px;
   cursor: pointer;
 }
-.download-button{
+.download-button {
   background-color: aliceblue;
   border: none;
   color: #555555;
@@ -58,4 +57,3 @@ a:hover {
   text-decoration: none;
   color: inherit;
 }
-
