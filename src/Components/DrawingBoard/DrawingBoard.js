@@ -11,7 +11,11 @@ const DrawingCanvas = () => {
     const canvas = canvasRef.current;
     canvas.width = 32;
     canvas.height = 32;
+
     const context = canvas.getContext("2d");
+    context.fillStyle = "white"; // set background color to white
+    context.fillRect(0, 0, canvas.width, canvas.height); // fill the entire canvas with white
+
     context.lineCap = "round";
     context.strokeStyle = "black";
     context.lineWidth = 1.5;
@@ -49,9 +53,9 @@ const DrawingCanvas = () => {
   };
 
   const saveImageToLocal = (event) => {
-    let link = event.currentTarget;
-    link.setAttribute("download", "number.png");
-    let image = canvasRef.current.toDataURL("image/png");
+    const link = event.currentTarget;
+    link.setAttribute("download", "number.jpg");
+    let image = canvasRef.current.toDataURL("image/jpg");
     link.setAttribute("href", image);
   };
 
