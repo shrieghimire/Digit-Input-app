@@ -57,3 +57,10 @@ a:hover {
   text-decoration: none;
   color: inherit;
 }
+.inputHolder{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+}

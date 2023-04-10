@@ -6,6 +6,7 @@ const DrawingCanvas = () => {
   const contextRef = useRef(null);
 
   const [isDrawing, setIsDrawing] = useState(false);
+  const [imageURL, setImageURL] = useState(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -58,6 +59,15 @@ const DrawingCanvas = () => {
     let image = canvasRef.current.toDataURL("image/png");
     link.setAttribute("href", image);
   };
+  const uploadImage = (e) => {
+    const { files } = e.target;
+    if (files.length > 0) {
+      const url = URL.createObjectURL(files[0]);
+      setImageURL(url);
+    } else {
+      setImageURL(null);
+    }
+  };
 
   return (
     <div>
@@ -75,10 +85,24 @@ const DrawingCanvas = () => {
         <button className="reset-button" onClick={setToErase}>
           Reset
         </button>
-        <button className="download-button" >
-          <a id="download_image_link" href="download_link" onClick={saveImageToLocal}>Download</a>
-          
+        <button className="download-button">
+          <a
+            id="download_image_link"
+            href="download_link"
+            onClick={saveImageToLocal}
+          >
+            Download
+          </a>
         </button>
+      </div>
+      <div className="inputHolder">
+        <input
+          type="file"
+          accept="image/*"
+          capture="camera"
+          className="uploadInput"
+          onChange={uploadImage}
+        />
       </div>
     </div>
   );
