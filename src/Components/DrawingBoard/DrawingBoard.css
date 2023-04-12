@@ -1,9 +1,9 @@
 .drawing-box {
-  position: static;
+  position: relative;
   width: 32px;
   height: 32px;
   background-color: white;
-  box-shadow: 0px 0px 5px white;
+  /* box-shadow: 0px 0px 5px white; */
   margin: auto;
   margin-top: 30px;
   transform: scale(11.625);
@@ -57,16 +57,4 @@ a:hover {
   text-decoration: none;
   color: inherit;
 }
-.inputHolder {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 4px;
-}
-.uploadInput {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  visibility: hidden;
-}
+

@@ -10,7 +10,7 @@
   height: auto;
 
   /* Set up positioning */
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 }

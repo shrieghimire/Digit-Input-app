@@ -1,0 +1,60 @@
+.inputHolder {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+}
+.uploadInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.uploadedImage {
+  position: absolute;
+  top: 0;
+  left: 48.8%;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  margin: auto;
+  margin-top: 30px;
+  transform: scale(11.625);
+  transform-origin: top center;
+}
+.identify-button {
+  position: fixed;
+  background-color: #555555;
+  border: none;
+  color: aliceblue;
+  border: 2px solid black;
+  padding: 15px 32px;
+  margin-top: 20px;
+  margin-left: 910px;
+  /* text-align: center; */
+  transition-duration: 0.4s;
+  /* text-decoration: none; */
+  font-size: 16px;
+  cursor: pointer;
+}
+.identify-button:hover {
+  background-color: #555555; /* Green */
+  color: white;
+}
+.uploadImage{
+    position: relative;
+    background-color: aliceblue;
+    border: none;
+    color: #555555;
+    border: 2px solid black;
+    padding: 15px 32px;
+    margin: auto;
+    transition-duration: 0.4s;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .uploadImage:hover {
+    background-color: #555555; /* Green */
+    color: white;
+  }

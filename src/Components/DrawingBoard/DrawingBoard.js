@@ -6,8 +6,7 @@ const DrawingCanvas = () => {
   const contextRef = useRef(null);
 
   const [isDrawing, setIsDrawing] = useState(false);
-  const [imageURL, setImageURL] = useState(null);
-  const fileInputRef = useRef();
+  const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -43,6 +42,7 @@ const DrawingCanvas = () => {
     contextRef.current.lineTo(offsetX, offsetY);
     contextRef.current.stroke();
     nativeEvent.preventDefault();
+    checkCanvasEmpty();
   };
 
   const stopDrawing = () => {
@@ -60,19 +60,20 @@ const DrawingCanvas = () => {
     let image = canvasRef.current.toDataURL("image/png");
     link.setAttribute("href", image);
   };
-  const uploadImage = (e) => {
-    const { files } = e.target;
-    if (files.length > 0) {
-      const url = URL.createObjectURL(files[0]);
-      setImageURL(url);
-    } else {
-      setImageURL(null);
-    }
-  };
-  const triggerUpload = () => {
-    fileInputRef.current.click();
-  };
+  const checkCanvasEmpty = () => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 
+    for (let i = 0; i < imageData.data.length; i++) {
+      if (imageData.data[i] !== 0) {
+        setIsCanvasEmpty(false);
+        return;
+      }
+    }
+
+    setIsCanvasEmpty(true);
+  };
   return (
     <div>
       <div className="drawing-box">
@@ -84,42 +85,24 @@ const DrawingCanvas = () => {
           onMouseLeave={stopDrawing}
         ></canvas>
       </div>
-      <div className="mainWrapper"> 
-        <div className="mainContent">
-          <div className="imageHolder">
-            <img src= {imageURL}/>
-          </div>
-        </div>
-      </div>
-
-
 
       <div className="buttons">
-        <button className="reset-button" onClick={setToErase}>
-          Reset
-        </button>
-        <button className="download-button">
-          <a
-            id="download_image_link"
-            href="download_link"
-            onClick={saveImageToLocal}
-          >
-            Download
-          </a>
-        </button>
-      </div>
-      <div className="inputHolder">
-        <input
-          type="file"
-          accept="image/*"
-          capture="camera"
-          className="uploadInput"
-          onChange={uploadImage}
-          ref={fileInputRef}
-        />
-        <button className="uploadImage" onClick={triggerUpload}>
-          Upload Image
-        </button>
+        {!isCanvasEmpty && (
+          <button className="reset-button" onClick={setToErase}>
+            Reset
+          </button>
+        )}
+        {!isCanvasEmpty && (
+          <button className="download-button">
+            <a
+              id="download_image_link"
+              href="download_link"
+              onClick={saveImageToLocal}
+            >
+              Download
+            </a>
+          </button>
+        )}
       </div>
     </div>
   );
