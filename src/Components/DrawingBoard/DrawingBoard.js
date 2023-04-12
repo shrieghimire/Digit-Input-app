@@ -7,6 +7,7 @@ const DrawingCanvas = () => {
 
   const [isDrawing, setIsDrawing] = useState(false);
   const [imageURL, setImageURL] = useState(null);
+  const fileInputRef = useRef();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -68,6 +69,9 @@ const DrawingCanvas = () => {
       setImageURL(null);
     }
   };
+  const triggerUpload = () => {
+    fileInputRef.current.click();
+  };
 
   return (
     <div>
@@ -80,6 +84,15 @@ const DrawingCanvas = () => {
           onMouseLeave={stopDrawing}
         ></canvas>
       </div>
+      <div className="mainWrapper"> 
+        <div className="mainContent">
+          <div className="imageHolder">
+            <img src= {imageURL}/>
+          </div>
+        </div>
+      </div>
+
+
 
       <div className="buttons">
         <button className="reset-button" onClick={setToErase}>
@@ -102,7 +115,11 @@ const DrawingCanvas = () => {
           capture="camera"
           className="uploadInput"
           onChange={uploadImage}
+          ref={fileInputRef}
         />
+        <button className="uploadImage" onClick={triggerUpload}>
+          Upload Image
+        </button>
       </div>
     </div>
   );
