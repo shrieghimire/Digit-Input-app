@@ -55,6 +55,6 @@
     cursor: pointer;
   }
   .uploadImage:hover {
-    background-color: #555555; /* Green */
-    color: white;
+    background-color: white; /* Green */
+    color: black;
   }
