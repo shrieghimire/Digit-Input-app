@@ -19,7 +19,7 @@ const DrawingCanvas = () => {
 
     context.lineCap = "round";
     context.strokeStyle = "white";
-    context.lineWidth = 2;
+    context.lineWidth = 1.5;
     contextRef.current = context;
   }, []);
 
@@ -87,22 +87,21 @@ const DrawingCanvas = () => {
       </div>
 
       <div className="buttons">
-        {!isCanvasEmpty && (
-          <button className="reset-button" onClick={setToErase}>
-            Reset
-          </button>
-        )}
-        {!isCanvasEmpty && (
-          <button className="download-button">
-            <a
-              id="download_image_link"
-              href="download_link"
-              onClick={saveImageToLocal}
-            >
-              Download
-            </a>
-          </button>
-        )}
+        {/* {!isCanvasEmpty &&( */}
+        <button className="reset-button" onClick={setToErase}>
+          Reset
+        </button>
+        {/* // )} */}
+
+        <button className="download-button">
+          <a
+            id="download_image_link"
+            href="download_link"
+            onClick={saveImageToLocal}
+          >
+            Download
+          </a>
+        </button>
       </div>
     </div>
   );
