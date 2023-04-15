@@ -1,5 +1,6 @@
 import "./DrawingBoard.css";
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
 const DrawingCanvas = () => {
   const canvasRef = useRef(null);
@@ -7,6 +8,7 @@ const DrawingCanvas = () => {
 
   const [isDrawing, setIsDrawing] = useState(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
+  const [prediction, setPrediction] = useState(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -31,6 +33,19 @@ const DrawingCanvas = () => {
     contextRef.current.stroke();
     setIsDrawing(true);
     nativeEvent.preventDefault();
+  };
+  const predictImage = async () => {
+    const canvas = canvasRef.current;
+    const dataURL = canvas.toDataURL("image/png");
+
+    try {
+      const response = await axios.post("http://localhost:8000/image-upload", {
+        image: dataURL,
+      });
+      setPrediction(response.data.prediction);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const draw = ({ nativeEvent }) => {
@@ -102,7 +117,12 @@ const DrawingCanvas = () => {
             Download
           </a>
         </button>
+        <button className="predict-button" onClick={predictImage}>
+          Predict
+        </button>
       </div>
+
+      {prediction && <p>Prediction: {prediction}</p>}
     </div>
   );
 };
