@@ -8,7 +8,7 @@ const DrawingCanvas = () => {
 
   const [isDrawing, setIsDrawing] = useState(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
-  const [prediction, setPrediction] = useState(null);
+  const [predictedValue, setPredictedValue] = useState(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -36,13 +36,18 @@ const DrawingCanvas = () => {
   };
   const predictImage = async () => {
     const canvas = canvasRef.current;
-    const dataURL = canvas.toDataURL("image/png");
-
+    const dataURL = canvas.toDataURL("image/*");  
     try {
-      const response = await axios.post("http://localhost:8000/image-upload", {
-        image: dataURL,
-      });
-      setPrediction(response.data.prediction);
+      const response = await fetch(dataURL);
+      const blob = await response.blob();
+      const image = new File([blob], "image", { type: "image/png" });
+      
+      const formData = new FormData();
+      formData.append("file", image);
+      
+      const predictResponse = await axios.post("http://localhost:8000/image-upload", formData);
+      console.log(predictResponse.data.Prediction);
+      setPredictedValue(predictResponse.data.Prediction);
     } catch (error) {
       console.log(error);
     }
@@ -102,11 +107,9 @@ const DrawingCanvas = () => {
       </div>
 
       <div className="buttons">
-        {/* {!isCanvasEmpty &&( */}
         <button className="reset-button" onClick={setToErase}>
           Reset
         </button>
-        {/* // )} */}
 
         <button className="download-button">
           <a
@@ -117,12 +120,14 @@ const DrawingCanvas = () => {
             Download
           </a>
         </button>
-        <button className="predict-button" onClick={predictImage}>
-          Predict
-        </button>
+        {!isCanvasEmpty && (
+          <button className="predict-button" onClick={predictImage}>
+            Predict
+          </button>
+        )}
       </div>
-
-      {prediction && <p>Prediction: {prediction}</p>}
+      <div id="prediction"><h2
+      >Prediction: {predictedValue}</h2></div>
     </div>
   );
 };
